@@ -1,12 +1,7 @@
-#.bashrc 
-
-#force_colored_prompt=yes
+#.zshrc
 
 alias cls="clear"
-alias eer="exit"
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
-fi
+alias er="exit"
 
 #GO related
 export GOPATH=$HOME/Documents/golang/raum_1
@@ -18,3 +13,14 @@ export PATH
 # Set additional paths
 PATH=/Users/stefan/:$GOPATH/bin/:$PATH
 export PATH
+
+#Set Appengine stuff
+PATH=$HOME/Documents/golang/go_appengine:$PATH
+export PATH
+
+# Set the prompt
+autoload -U promptinit
+promptinit
+PROMPT="%n @ %~ $ " 
+RPROMPT=""
+

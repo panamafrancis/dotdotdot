@@ -5,7 +5,7 @@ if [ ! -d "$old" ]; then
 	mkdir $old
 fi
 
-files="vimrc bashrc bash_profile"
+files="vimrc zshrc bashrc bash_profile vim"
 
 for file in $files; do
 	if [ -e ~/.$file ]; then
@@ -19,3 +19,5 @@ for file in $files; do
 	#create symbolic link
 	ln -s $PWD/$file ~/.$file 
 done
+
+
