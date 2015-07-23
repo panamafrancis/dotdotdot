@@ -4,7 +4,7 @@ alias cls="clear"
 alias er="exit"
 
 #GO related
-export GOPATH=$HOME/Documents/golang/raum_1
+export GOPATH=$HOME/code/go
 
 #Set normal paths
 PATH='/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/go/bin:/usr/X11/bin:/Users/stefan/bin'

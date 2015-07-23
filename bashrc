@@ -1,20 +1,32 @@
 #.bashrc 
 
-#force_colored_prompt=yes
+# we want ls with colours
+alias ls="ls -G"
 
-alias cls="clear"
-alias eer="exit"
+# Go To Work
+alias gtw="cd ~/code/go/src/github.com/spiffylabs"
+
+# clear screen
+alias cls='printf "\033c"'
+
+# exit
+alias er="exit"
+
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
 #GO related
-export GOPATH=$HOME/Documents/golang/raum_1
+export GOPATH=$HOME/code/go
+export GOAPPENGINEPATH=$HOME/go_appengine
 
 #Set normal paths
 PATH='/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local/go/bin:/usr/X11/bin:/Users/stefan/bin'
 export PATH
 
 # Set additional paths
-PATH=/Users/stefan/:$GOPATH/bin/:$PATH
+PATH=$GOPATH/bin:$GOAPPENGINEPATH:$PATH
 export PATH
+
+# Ocaml stuff
+eval `opam config env`

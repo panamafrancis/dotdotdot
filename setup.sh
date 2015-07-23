@@ -20,4 +20,11 @@ for file in $files; do
 	ln -s $PWD/$file ~/.$file 
 done
 
+mkdir ~/.vim/backups
 
+echo "installing vim plugins"
+brew install ctags-exuberant
+brew install mercurial
+
+vim +PluginInstall +qall
+vim +GoInstallBinaries

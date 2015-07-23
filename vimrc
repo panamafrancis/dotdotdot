@@ -7,13 +7,19 @@
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
+" Disable the godoc thing, it interferes with 'K'
+let g:go_doc_keywordprg_enabled = 0
+
+" OCaml merlin stuff
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
   
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plugin 'gmarik/vundle'
 
 " This can be useful
 Plugin 'fatih/vim-go'
@@ -24,14 +30,29 @@ Plugin 'majutsushi/tagbar'
 " Nerdtree
 Plugin 'scrooloose/nerdtree'
 
+" NerdTree git plugin
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
 " Easytag shit
 Plugin 'xolox/vim-easytags'
 
 " Something to do with easytags
 Plugin 'xolox/vim-misc'
 
-" Vim session management
-Plugin 'xolox/vim-session'
+" js indenting stuff
+Plugin 'pangloss/vim-javascript'
+
+" js linting
+Plugin 'Shutnik/jshint2.vim'
+
+" YCM
+Plugin 'Valloric/YouCompleteMe'
+
+" Lucius color
+Plugin 'jonathanfilip/vim-lucius'
+
+" a better status line
+Plugin 'bling/vim-airline'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -65,9 +86,6 @@ syntax on
 " Backspace is best when not limited to what has just been written
 set backspace=indent,eol,start
 
-"clipboard stuff
-"set clipboard=unnamed
-
 " Enable syntax highlighting for .md files
 au BufRead,BufNewFile *.md set filetype=markdown
 
@@ -86,11 +104,74 @@ set grepprg=ag
 " bind K to grep word under cursor
 nmap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
-" \ character greps 
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+" character greps 
+command! -nargs=+ -complete=file -bar Ag  silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
 
 set backupdir=$HOME/.vim/backups
 
-let g:session_autoload='yes'
-let g:session_autosave='yes'
+" do syntax highlighting the slow way, corrects poor highlighting in HTML files
+autocmd BufEnter * :syntax sync minlines=200
+" pesky rappers
+set nowrap
+
+" Replace select text , ctrl-r in vis mode
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
+" tab stuff
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" local vim settings
+set exrc
+set secure "important
+
+" turn on scroll support
+set mouse=a
+
+"i just don't understand why this would be disabled in vim-go by default... :/
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+" color scheme, keep in mind i use a mac with my screen colours inverted
+colorscheme lucius
+LuciusWhiteHighContrast
+
+" CDC = Change to Directory of Current file
+command! CDC cd %:p:h
+
+" he told me to do it...
+" http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
+let mapleader = "\<Space>"
+
+"vim status line always
+set laststatus=2
+
+" 99% of the time i want to save & quit all or save all
+nnoremap <Leader>w :wa<CR>
+nnoremap <Leader>q :q<CR> 
+nnoremap <Leader>qq :wq<CR> 
+nnoremap <Leader>a :wqa<CR> 
+
+" set current working directory to current file (and print it)
+nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
+
+" Vim-Go Go to definition
+nmap <Leader>g :GoDef<CR>
+
+" Copy and paste from clipboard
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
+" set tab to switch windows
+map <Tab> <C-W>W
+
+
