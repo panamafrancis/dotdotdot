@@ -1,0 +1,15 @@
+[user]
+	name = panamafrancis
+	email = anonwasere@gmail.com
+[core]
+	excludesfile = /Users/stefan/.gitignore_global
+[push]
+	default = simple
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
