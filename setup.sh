@@ -5,7 +5,7 @@ if [ ! -d "$old" ]; then
 	mkdir $old
 fi
 
-files="vimrc zshrc bashrc bash_profile vim"
+files="vimrc zshrc bashrc bash_profile vim gitignore_global"
 
 for file in $files; do
 	if [ -e ~/.$file ]; then

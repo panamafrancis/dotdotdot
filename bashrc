@@ -4,7 +4,7 @@
 alias ls="ls -G"
 
 # Go To Work
-alias gtw="cd ~/code/go/src/github.com/spiffylabs"
+alias gtw="cd ~/code/go/src/github.com/fraugster"
 
 # clear screen
 alias cls='printf "\033c"'
@@ -30,3 +30,7 @@ export PATH
 
 # Ocaml stuff
 eval `opam config env`
+
+# Docker environment initialisation
+eval "$(docker-machine env dev)"
+

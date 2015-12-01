@@ -54,6 +54,15 @@ Plugin 'jonathanfilip/vim-lucius'
 " a better status line
 Plugin 'bling/vim-airline'
 
+" git
+Plugin 'tpope/vim-fugitive'
+
+" hex mode
+Plugin 'fidian/hexmode'
+
+" CSV
+Plugin 'chrisbra/csv.vim'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -129,6 +138,7 @@ set secure "important
 
 " turn on scroll support
 set mouse=a
+set ttymouse=xterm2
 
 "i just don't understand why this would be disabled in vim-go by default... :/
 let g:go_highlight_functions = 1
@@ -136,25 +146,25 @@ let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
+let g:go_fmt_commands = "goimports"
 
 " color scheme, keep in mind i use a mac with my screen colours inverted
 colorscheme lucius
 LuciusWhiteHighContrast
 
-" CDC = Change to Directory of Current file
+" CDC = Change to Directory to Current file
 command! CDC cd %:p:h
+
+"vim status line always
+set laststatus=2
 
 " he told me to do it...
 " http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
 let mapleader = "\<Space>"
 
-"vim status line always
-set laststatus=2
-
 " 99% of the time i want to save & quit all or save all
 nnoremap <Leader>w :wa<CR>
 nnoremap <Leader>q :q<CR> 
-nnoremap <Leader>qq :wq<CR> 
 nnoremap <Leader>a :wqa<CR> 
 
 " set current working directory to current file (and print it)
@@ -162,6 +172,8 @@ nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " Vim-Go Go to definition
 nmap <Leader>g :GoDef<CR>
+nmap <Leader>b :GoBuild<CR>
+nmap <Leader>t :GoTest<CR>
 
 " Copy and paste from clipboard
 vmap <Leader>y "+y
@@ -173,5 +185,3 @@ vmap <Leader>P "+P
 
 " set tab to switch windows
 map <Tab> <C-W>W
-
-
