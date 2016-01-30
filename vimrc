@@ -89,6 +89,9 @@ set ff=unix
 " Highlight all search matches
 set hlsearch
 
+" Turn on proper column block visual selection
+set ve+=block
+
 " Syntax Highlighting
 syntax on
 
@@ -174,6 +177,7 @@ nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 nmap <Leader>g :GoDef<CR>
 nmap <Leader>b :GoBuild<CR>
 nmap <Leader>t :GoTest<CR>
+nmap <Leader>l :GoLint<CR>
 
 " Copy and paste from clipboard
 vmap <Leader>y "+y
