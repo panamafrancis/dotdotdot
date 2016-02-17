@@ -3,6 +3,7 @@
 	email = anonwasere@gmail.com
 [core]
 	excludesfile = /Users/stefan/.gitignore_global
+	editor = vim
 [push]
 	default = simple
 [diff]

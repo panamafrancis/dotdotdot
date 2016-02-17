@@ -106,7 +106,7 @@ PATH='/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/usr/local
 export PATH
 
 # Set additional paths
-PATH=/Users/stefan/:$GOPATH/bin/:$PATH
+PATH=$GOPATH/bin:$PATH
 export PATH
 
 #Set Appengine stuff
@@ -117,3 +117,4 @@ export PATH
 # Docker environment initialisation
 eval "$(docker-machine env dev)"
 
+export PATH="/usr/local/sbin:$PATH"

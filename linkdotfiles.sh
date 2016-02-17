@@ -5,7 +5,7 @@ if [ ! -d "$old" ]; then
 	mkdir $old
 fi
 
-files="vimrc zshrc bashrc bash_profile vim gitignore_global"
+files="vimrc zshrc bashrc bash_profile vim gitconfig gitignore_global"
 
 for file in $files; do
 	if [ -e ~/.$file ]; then
@@ -17,14 +17,6 @@ for file in $files; do
 		fi
 	fi
 	#create symbolic link
-	ln -s $PWD/$file ~/.$file 
+	ln -s $PWD/configs/$file ~/.$file 
 done
 
-mkdir ~/.vim/backups
-
-echo "installing vim plugins"
-brew install ctags-exuberant
-brew install mercurial
-
-vim +PluginInstall +qall
-vim +GoInstallBinaries

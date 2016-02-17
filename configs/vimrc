@@ -10,10 +10,6 @@ filetype off                  " required
 " Disable the godoc thing, it interferes with 'K'
 let g:go_doc_keywordprg_enabled = 0
 
-" OCaml merlin stuff
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -38,12 +34,6 @@ Plugin 'xolox/vim-easytags'
 
 " Something to do with easytags
 Plugin 'xolox/vim-misc'
-
-" js indenting stuff
-Plugin 'pangloss/vim-javascript'
-
-" js linting
-Plugin 'Shutnik/jshint2.vim'
 
 " YCM
 Plugin 'Valloric/YouCompleteMe'
